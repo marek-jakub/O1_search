@@ -1,6 +1,29 @@
 # Marek Jakub
 # 2021
 
+# Helper method to the insert method.
+def insert_it(a_list, an_item, a_hash, a_level):
+    jump = get_jump()
+    # If index is empty, inset an_item at the index.
+    if a_list[a_hash] is None:
+        a_list[a_hash] = an_item
+    # If there is a list at the index, inset an_item in the inner list
+    elif type(a_list[a_hash]) is list:
+        new_hash = an_item % (a_level + jump)
+        inner_list = a_list[a_hash]
+        insert_it(inner_list, an_item, new_hash, (a_level + jump))
+    # If there is a collision, create an inner list, place it at the index,
+    # insert two colliding items in the inner list.
+    else:
+        current_item = a_list[a_hash]
+        current_item_hash = current_item % (a_level + jump)
+        new_list = [None] * (a_level + jump)
+        new_list[current_item_hash] = current_item
+        a_list[a_hash] = new_list
+        new_hash = an_item % (a_level + jump)
+        insert_it(new_list, an_item, new_hash, (a_level + jump))
+
+
 class DList:
     def __init__(self):
         """ Initial object is an empty list."""
@@ -18,4 +41,4 @@ class DList:
     def insert(self, item):
         """ Checks the index at a_hash, if it is not empty creates new inner list and inserts in the list."""
         a_hash = item % self.level
-        get_in(self.dList, item, a_hash, self.level)
+        insert_it(self.dList, item, a_hash, self.level)
