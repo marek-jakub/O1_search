@@ -14,3 +14,8 @@ class DList:
             if i is not None:
                 is_empty = False
         return is_empty
+
+    def insert(self, item):
+        """ Checks the index at a_hash, if it is not empty creates new inner list and inserts in the list."""
+        a_hash = item % self.level
+        get_in(self.dList, item, a_hash, self.level)
