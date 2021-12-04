@@ -8,6 +8,7 @@ def get_jump():
     # repeating collisions (can be positive or negative).
     return 61
 
+
 # Helper method to the insert method.
 def insert_it(a_list, an_item, a_hash, a_level):
     jump = get_jump()
@@ -49,3 +50,9 @@ class DList:
         """ Checks the index at a_hash, if it is not empty creates new inner list and inserts in the list."""
         a_hash = item % self.level
         insert_it(self.dList, item, a_hash, self.level)
+
+    def find(self, item):
+        """ Returns a level (how far from the starting list the inner list is) and index of the
+         item in the list if found, otherwise returns level and -1. """
+        a_hash = item % self.level
+        return find_position(self.dList, item, a_hash, self.level)
