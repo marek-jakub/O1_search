@@ -1,13 +1,20 @@
 # Marek Jakub
 # 2021
 
+# Helper method to insert_it method
+def get_jump():
+    # Define an int which will determine the size of lists placed at different levels,
+    # important to distinguish list size at different levels in order to avoid
+    # repeating collisions (can be positive or negative).
+    return 61
+
 # Helper method to the insert method.
 def insert_it(a_list, an_item, a_hash, a_level):
     jump = get_jump()
-    # If index is empty, inset an_item at the index.
+    # If position at index (a_hash) is empty, insert an_item at the index.
     if a_list[a_hash] is None:
         a_list[a_hash] = an_item
-    # If there is a list at the index, inset an_item in the inner list
+    # If there is a list at the index, insert an_item in the inner list
     elif type(a_list[a_hash]) is list:
         new_hash = an_item % (a_level + jump)
         inner_list = a_list[a_hash]
