@@ -32,6 +32,18 @@ def insert_it(a_list, an_item, a_hash, a_level):
         insert_it(new_list, an_item, new_hash, (a_level + jump))
 
 
+# Helper method to the positionOf method.
+def find_position(a_list, an_item, a_hash, a_level):
+    jump = get_jump()
+    if a_list[a_hash] == an_item:
+        return a_level, a_hash, a_list[a_hash]
+    elif type(a_list[a_hash]) is list:
+        new_hash = an_item % (a_level + jump)
+        inner_list = a_list[a_hash]
+        return find_position(inner_list, an_item, new_hash, (a_level + jump))
+    return a_level, -1, a_list[a_hash]
+
+
 class DList:
     def __init__(self):
         """ Initial object is an empty list."""
@@ -47,12 +59,13 @@ class DList:
         return is_empty
 
     def insert(self, item):
-        """ Checks the index at a_hash, if it is not empty creates new inner list and inserts in the list."""
+        """ Checks the index at a_hash, if it is not empty creates new
+         inner list and inserts in the list."""
         a_hash = item % self.level
         insert_it(self.dList, item, a_hash, self.level)
 
     def find(self, item):
-        """ Returns a level (how far from the starting list the inner list is) and index of the
-         item in the list if found, otherwise returns level and -1. """
+        """ Returns a level (how far from the starting list the inner list is)
+         and index of the item in the list if found, otherwise returns level and -1. """
         a_hash = item % self.level
         return find_position(self.dList, item, a_hash, self.level)
