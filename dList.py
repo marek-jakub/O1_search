@@ -85,5 +85,6 @@ class DList:
         return find_position(self.dList, item, a_hash, self.level)
 
     def show_stats(self):
-        """ Print outs list count, and position count at different levels. """
-        print("dList number of lists, and len of all lists: ", count_lists(self.dList))
+        """ Prints out list count, and total length of all lists. """
+        print("dList object's number of lists, and length of all lists: ",
+              count_lists(self.dList))
