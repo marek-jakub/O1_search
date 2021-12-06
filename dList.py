@@ -32,7 +32,7 @@ def insert_it(a_list, an_item, a_hash, a_level):
         insert_it(new_list, an_item, new_hash, (a_level + jump))
 
 
-# Helper method to the positionOf method.
+# Helper method to the find method.
 def find_position(a_list, an_item, a_hash, a_level):
     jump = get_jump()
     if a_list[a_hash] == an_item:
@@ -42,6 +42,20 @@ def find_position(a_list, an_item, a_hash, a_level):
         inner_list = a_list[a_hash]
         return find_position(inner_list, an_item, new_hash, (a_level + jump))
     return a_level, -1, a_list[a_hash]
+
+
+# Helper method to the show_stats method.
+def count_lists(a_list):
+    lists_size = 0
+    count = 0
+    for i in a_list:
+        if type(i) is list:
+            lists_size += len(i)
+            count += 1
+            curr_count, curr_size = count_lists(i)
+            lists_size += curr_size
+            count += curr_count
+    return count, lists_size
 
 
 class DList:
