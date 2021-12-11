@@ -69,8 +69,8 @@ def count_lists(a_list):
 class DList:
     def __init__(self):
         """ Initial object is an empty list."""
-        self.level = 68
-        self.dList = [None for _ in range(self.level)]
+        self.list_length = 68
+        self.dList = [None for _ in range(self.list_length)]
 
     def is_empty(self):
         """ Returns true if and only if the list 'dList' is empty. """
@@ -83,25 +83,25 @@ class DList:
     def insert(self, item):
         """ Checks the index at a_hash, if it is not empty creates new
          inner list and inserts in the list."""
-        a_hash = item % self.level
-        insert_it(self.dList, item, a_hash, self.level)
+        a_hash = item % self.list_length
+        insert_it(self.dList, item, a_hash, self.list_length)
 
     def find(self, item):
         """ Returns a level (how far from the starting list the inner list is)
          and index of the item in the list if found, otherwise returns level and -1. """
-        a_hash = item % self.level
-        return find_position(self.dList, item, a_hash, self.level)
+        a_hash = item % self.list_length
+        return find_position(self.dList, item, a_hash, self.list_length)
 
     def show_stats(self):
         """ Prints out list count, and total length of all lists. """
         list_count, lists_size = count_lists(self.dList)
         print("dList object's number of inner lists, and length of inner lists: ",
               list_count, " : ", lists_size)
-        list_levels = position_stats[self.level::get_jump()]
+        list_levels = position_stats[self.list_length::get_jump()]
         # print("Position status: ", list_levels)
         level = 0
         for i in list_levels:
             if i > 0:
                 print("Level " + str(level) + " contains " + str(i) + " list(s) of length "
-                      + str(self.level + (level * get_jump())))
+                      + str(self.list_length + (level * get_jump())))
             level += 1
