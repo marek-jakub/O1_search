@@ -1,7 +1,7 @@
 # Marek Jakub
 # 2021
 
-# Helper method to insert_it method
+# Helper method to insert_it, find_position methods. Used in position_stats initialization.
 def get_jump():
     # Define an int which will determine the size of lists placed at different levels,
     # important to distinguish list size at different levels in order to avoid
