@@ -6,7 +6,7 @@ def get_jump():
     # Define an int which will determine the size of lists placed at different levels,
     # important to distinguish list size at different levels in order to avoid
     # repeating collisions (can be positive or negative).
-    return 61
+    return 1
 
 
 # Helper method to the insert method.
@@ -61,7 +61,7 @@ def count_lists(a_list):
 class DList:
     def __init__(self):
         """ Initial object is an empty list."""
-        self.level = 61
+        self.level = 68
         self.dList = [None for _ in range(self.level)]
 
     def is_empty(self):
@@ -86,5 +86,3 @@ class DList:
 
     def show_stats(self):
         """ Prints out list count, and total length of all lists. """
-        print("dList object's number of lists, and length of all lists: ",
-              count_lists(self.dList))
