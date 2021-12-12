@@ -52,6 +52,8 @@ position_stats = [0 for _ in range(get_jump() * get_jump() if get_jump() > 50 el
 
 # Helper method to the show_stats method.
 def count_lists(a_list):
+    # Count lists at different levels
+    position_stats[len(a_list)] += 1
     lists_size = 0
     count = 0
     for i in a_list:
