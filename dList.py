@@ -44,6 +44,12 @@ def find_position(a_list, an_item, a_hash, a_level):
     return a_level, -1, a_list[a_hash]
 
 
+# List holding list count found at specific levels,
+# its length should be sufficient to hold big differences in jumps.
+# It might need increasing in case of big jumps between list sizes from level to level.
+position_stats = [0 for _ in range(get_jump() * get_jump() if get_jump() > 50 else 2500)]
+
+
 # Helper method to the show_stats method.
 def count_lists(a_list):
     lists_size = 0
