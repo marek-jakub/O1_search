@@ -98,4 +98,10 @@ class DList:
         print("dList object's number of inner lists, and length of inner lists: ",
               list_count, " : ", lists_size)
         list_levels = position_stats[self.level::get_jump()]
-        print("Position status: ", list_levels)
+        # print("Position status: ", list_levels)
+        level = 0
+        for i in list_levels:
+            if i > 0:
+                print("Level " + str(level) + " contains " + str(i) + " list(s) of length "
+                      + str(self.level + (level * get_jump())))
+            level += 1
