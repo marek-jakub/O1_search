@@ -94,3 +94,6 @@ class DList:
 
     def show_stats(self):
         """ Prints out list count, and total length of all lists. """
+        list_count, lists_size = count_lists(self.dList)
+        print("dList object's number of inner lists, and length of inner lists: ",
+              list_count, " : ", lists_size)
