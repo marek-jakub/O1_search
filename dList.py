@@ -95,7 +95,7 @@ class DList:
     def show_stats(self):
         """ Prints out list count, and total length of all lists. """
         list_count, lists_size = count_lists(self.dList)
-        print("dList object's number of inner lists, and length of inner lists: ",
+        print("dList object's number of inner lists, and length of all inner lists: ",
               list_count, " : ", lists_size)
         list_levels = position_stats[self.list_length::get_jump()]
         # print("Position status: ", list_levels)
